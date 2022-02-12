@@ -1,0 +1,62 @@
+<%
+let tokenItemUrl = war.id;
+if (trait_normalization == 1) {
+  tokenItemUrl = war.id+'?trait_normalization=1';
+}
+%>
+<a href="/<%= item_path_name %>/<%= tokenItemUrl %>" style="text-decoration: none;">
+  <div>
+    <% if (war.rarity_rank) { %>
+    <h3 class="war-rank">Rank #<%= war.rarity_rank %></h3>
+    <% } %>
+    <% if (war.similar) { %>
+    <h3 class="war-similar-score">Similar Score #<%= war.similar.toFixed(2) %></h3>
+    <% } %>
+
+    <% if (war.image) { %>
+    <img class="war-avatar" style="<% if (content_image_frame=='square') { %> border-radius: 10px; <% } %>" src="<%= war.image; %>" alt="<%= war.name %>" /></img>
+    <% } %>
+
+    <% if (content_image_is_video) { %>
+    <video class="war-avatar" style="<% if (content_image_frame=='square') { %> border-radius: 10px; <% } %>" src="<%= war.image; %>" alt="<%= war.name %>" /></video>
+    <% } %>
+
+
+    <div class="war-info text-center">
+      <span><%= war.name %></span>
+      <svg 
+        viewBox="0 0 128 20" 
+        class="shadow"
+        style="transform: 
+          <% if (war.id % 4 == 0) { %> 
+          rotate(2.10582deg) 
+          <% } else if (war.id % 4 == 1) { %> 
+          rotate(-1.55956deg) 
+          <% } else if (war.id % 4 == 2) { %> 
+          rotate(-2.11894deg) 
+          <% } else { %> 
+          rotate(-0.804652deg) 
+          <% } %>
+          scale(1.15);"
+        >
+        <path d="M18.659464617674463 5.886049064536063L104.37818072626806 10.101969738149581L113.93276709105373 19.132353769878222L21.88176277928382 18.182120128591457L18.659464617674463 5.886049064536063Z" style="fill: var(--contrast);"></path>
+      </svg>
+      <svg 
+        viewBox="0 0 128 20" 
+        style="transform: 
+          <% if (war.id % 4 == 0) { %> 
+          rotate(2.10582deg) 
+          <% } else if (war.id % 4 == 1) { %> 
+          rotate(-1.55956deg) 
+          <% } else if (war.id % 4 == 2) { %> 
+          rotate(-2.11894deg) 
+          <% } else { %> 
+          rotate(-0.804652deg) 
+          <% } %>
+          scale(1.15);"
+        >
+        <path d="M18.659464617674463 5.886049064536063L104.37818072626806 10.101969738149581L113.93276709105373 19.132353769878222L21.88176277928382 18.182120128591457L18.659464617674463 5.886049064536063Z" style="fill: var(--primary);"></path>
+      </svg>
+    </div>
+  </div>
+</a>
